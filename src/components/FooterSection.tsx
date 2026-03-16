@@ -4,11 +4,11 @@ const FooterSection = () => {
   return (
     <footer id="contact" className="bg-gradient-dark text-primary-foreground py-16">
       <div className="container">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
-          <div className="md:col-span-1">
+        <div className="grid md:grid-cols-3 gap-10 mb-12">
+          <div>
             <img src={logo} alt="Finotrium" className="h-14 w-auto mb-4 brightness-0 invert" />
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
-              Enterprise management systems and digital payment solutions for Africa and beyond.
+              Enterprise management systems for Africa and beyond.
             </p>
           </div>
 
@@ -19,16 +19,6 @@ const FooterSection = () => {
               <li><a href="#" className="hover:text-primary-foreground transition-colors">School Management</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition-colors">Loan Management</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition-colors">E-Commerce</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-primary-foreground/80">Payments</h4>
-            <ul className="space-y-2 text-sm text-primary-foreground/60">
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Mobile Money</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Card Payments</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Payment Gateway</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">API Documentation</a></li>
             </ul>
           </div>
 

@@ -6,7 +6,6 @@ import logo from "@/assets/finotrium-logo.png";
 
 const navLinks = [
   { label: "Solutions", href: "#services" },
-  { label: "Payments", href: "#payments" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
