@@ -107,6 +107,12 @@ const ContactSection = () => {
             </p>
             <div className="space-y-4 text-sm text-muted-foreground">
               <div>
+                <span className="font-semibold text-foreground">Phone:</span>{" "}
+                <a href="tel:+254740561679" className="hover:text-secondary transition-colors">0740 561 679</a>
+                {" / "}
+                <a href="tel:+254753851245" className="hover:text-secondary transition-colors">0753 851 245</a>
+              </div>
+              <div>
                 <span className="font-semibold text-foreground">Email:</span>{" "}
                 info@finotrium.com
               </div>
