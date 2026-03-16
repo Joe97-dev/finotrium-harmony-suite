@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "vite_react_shadcn_ts",
   "private": true,
@@ -90,3 +91,6 @@
     "vitest": "^4.1.0"
   }
 }
+=======
+{}
+>>>>>>> 620468d (chore: remove lovable-tagger to fix Vite peer dependency conflict)
