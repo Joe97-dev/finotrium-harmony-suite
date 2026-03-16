@@ -6,7 +6,7 @@ const FooterSection = () => {
       <div className="container">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
-            <img src={logo} alt="Finotrium" className="h-14 w-auto mb-4" />
+            <img src={logo} alt="Finotrium" className="h-14 w-auto mb-4 rounded-md" />
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Enterprise management systems for Africa and beyond.
             </p>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/finotrium-logo-transparent.png";
+import logo from "@/assets/finotrium-logo.png";
 
 const navLinks = [
   { label: "Solutions", href: "#services" },
