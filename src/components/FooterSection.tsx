@@ -1,4 +1,4 @@
-import logo from "@/assets/finotrium-logo-transparent.png";
+import logo from "@/assets/finotrium-logo.png";
 
 const FooterSection = () => {
   return (
