@@ -2,7 +2,7 @@ import logo from "@/assets/finotrium-logo.png";
 
 const FooterSection = () => {
   return (
-    <footer id="contact" className="bg-gradient-dark text-primary-foreground py-16">
+    <footer className="bg-gradient-dark text-primary-foreground py-16">
       <div className="container">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
