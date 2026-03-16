@@ -49,7 +49,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between h-20">
         <a href="#" className="flex items-center gap-2" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-          <img src={logo} alt="Finotrium" className="h-16 w-auto" />
+          <img src={logo} alt="Finotrium" className="h-20 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
