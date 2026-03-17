@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp, Building2, GraduationCap, Landmark, ShoppingCart, Home, Globe, Wrench, BookOpen } from "lucide-react";
+import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp, Building2, GraduationCap, Landmark, ShoppingCart, Home, Globe, Wrench, BookOpen, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import hospitalImg from "@/assets/slides/hospital.jpg";
@@ -30,6 +30,12 @@ const slides = [
   { icon: Wrench, title: "Custom Systems", desc: "Bespoke solutions for unique operations", color: "accent" as const, image: customImg },
 ];
 
+const highlights = [
+  "M-Pesa Integration",
+  "Real-Time Analytics",
+  "24/7 Support",
+];
+
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -41,7 +47,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-8 overflow-hidden">
+    <section className="relative pt-28 pb-8 overflow-hidden min-h-[90vh] flex items-center">
       {/* Animated background */}
       <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -63,39 +69,107 @@ const HeroSection = () => {
       </div>
 
       <div className="container relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left copy */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
+            className="max-w-xl"
           >
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary/10 text-secondary text-xs font-semibold mb-6 tracking-wide uppercase"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold mb-8 tracking-wide uppercase backdrop-blur-sm"
             >
-              <Zap size={14} />
+              <motion.div
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              >
+                <Zap size={14} />
+              </motion.div>
               Enterprise Solutions
             </motion.div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-primary leading-[1.1] mb-6">
-              Management Systems{" "}
-              <span className="text-gradient-accent">Built to Scale</span>
+
+            <h1 className="font-display text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold text-primary leading-[1.08] mb-6 tracking-tight">
+              Management Systems
+              <br />
+              <span className="relative inline-block mt-1">
+                <span className="text-gradient-accent">Built to Scale</span>
+                <motion.div
+                  className="absolute -bottom-2 left-0 h-1 rounded-full bg-accent/30"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                />
+              </span>
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-md"
+            >
               From hospitals to schools, loans to e-commerce — we build robust, 
               scalable management technology that powers your operations.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="hero" size="lg">
+            </motion.p>
+
+            {/* Highlight chips */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap gap-3 mb-8"
+            >
+              {highlights.map((item, i) => (
+                <motion.span
+                  key={item}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  className="inline-flex items-center gap-1.5 text-sm text-accent font-medium"
+                >
+                  <CheckCircle2 size={15} className="text-accent" />
+                  {item}
+                </motion.span>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Button variant="hero" size="lg" className="text-base px-8 py-6 shadow-lg shadow-secondary/25 hover:shadow-xl hover:shadow-secondary/30 transition-all">
                 Explore Solutions
-                <ArrowRight size={16} />
+                <ArrowRight size={18} className="ml-1" />
               </Button>
-              <Button variant="heroOutline" size="lg">
+              <Button variant="heroOutline" size="lg" className="text-base px-8 py-6">
                 Book a Demo
               </Button>
-            </div>
+            </motion.div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-10 flex items-center gap-4 text-muted-foreground"
+            >
+              <div className="flex -space-x-2">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-secondary/15 flex items-center justify-center">
+                    <Users size={12} className="text-secondary" />
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm">
+                <span className="font-semibold text-primary">30+ companies</span> trust our systems
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* Right - Animated slides */}
@@ -127,13 +201,11 @@ const HeroSection = () => {
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className="absolute inset-0"
                   >
-                    {/* Background image */}
                     <img
                       src={slides[currentSlide].image}
                       alt={slides[currentSlide].title}
                       className="w-full h-full object-cover"
                     />
-                    {/* Overlay with title */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent flex flex-col justify-end p-6">
                       <div className="flex items-center gap-3">
                         {(() => {
@@ -166,7 +238,6 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-
           </motion.div>
         </div>
 
