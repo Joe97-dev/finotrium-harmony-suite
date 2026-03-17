@@ -35,10 +35,10 @@ const FooterSection = () => {
           <div>
             <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-secondary">Company</h4>
             <ul className="space-y-2.5 text-sm text-primary-foreground/60">
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Blog</a></li>
+              <li><a href="#why-us" className="hover:text-primary-foreground transition-colors">About Us</a></li>
+              <li><a href="#contact" className="hover:text-primary-foreground transition-colors">Careers</a></li>
+              <li><a href="#contact" className="hover:text-primary-foreground transition-colors">Contact</a></li>
+              <li><a href="#testimonials" className="hover:text-primary-foreground transition-colors">Blog</a></li>
             </ul>
           </div>
         </div>
