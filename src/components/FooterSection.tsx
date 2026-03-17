@@ -4,17 +4,17 @@ const FooterSection = () => {
   return (
     <footer className="bg-gradient-dark text-primary-foreground py-16">
       <div className="container">
-        <div className="grid md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div>
             <img src={logo} alt="Finotrium" className="h-14 w-auto mb-4 rounded-md" />
-            <p className="text-primary-foreground/60 text-sm leading-relaxed">
+            <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-xs">
               Enterprise management systems for Africa and beyond.
             </p>
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-primary-foreground/80">Solutions</h4>
-            <ul className="space-y-2 text-sm text-primary-foreground/60">
+            <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-secondary">Solutions</h4>
+            <ul className="space-y-2.5 text-sm text-primary-foreground/60">
               <li><a href="#" className="hover:text-primary-foreground transition-colors">Hospital Management</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition-colors">School Management</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition-colors">Loan Management</a></li>
@@ -23,8 +23,18 @@ const FooterSection = () => {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-primary-foreground/80">Company</h4>
-            <ul className="space-y-2 text-sm text-primary-foreground/60">
+            <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-secondary">More Solutions</h4>
+            <ul className="space-y-2.5 text-sm text-primary-foreground/60">
+              <li><a href="#" className="hover:text-primary-foreground transition-colors">Property Management</a></li>
+              <li><a href="#" className="hover:text-primary-foreground transition-colors">Library Management</a></li>
+              <li><a href="#" className="hover:text-primary-foreground transition-colors">Website Development</a></li>
+              <li><a href="#" className="hover:text-primary-foreground transition-colors">Custom Systems</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-secondary">Company</h4>
+            <ul className="space-y-2.5 text-sm text-primary-foreground/60">
               <li><a href="#" className="hover:text-primary-foreground transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition-colors">Careers</a></li>
               <li><a href="#" className="hover:text-primary-foreground transition-colors">Contact</a></li>
