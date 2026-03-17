@@ -94,7 +94,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 40, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative"
           >
             <div className="relative rounded-lg overflow-hidden shadow-2xl border border-border/50 bg-card aspect-[4/3]">
               {/* Slide header bar */}
