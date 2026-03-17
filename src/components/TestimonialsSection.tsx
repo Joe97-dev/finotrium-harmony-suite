@@ -44,7 +44,7 @@ const trustedBy = [
 
 const TestimonialsSection = () => {
   return (
-    <section id="about" className="py-20 bg-muted/50">
+    <section id="testimonials" className="py-20 bg-muted/50">
       <div className="container">
         {/* Trusted By - marquee style */}
         <motion.div
