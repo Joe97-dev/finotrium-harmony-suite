@@ -143,11 +143,11 @@ const HeroSection = () => {
               transition={{ delay: 0.7 }}
               className="flex flex-wrap gap-4"
             >
-              <Button variant="hero" size="lg" className="text-base px-8 py-6 shadow-lg shadow-secondary/25 hover:shadow-xl hover:shadow-secondary/30 transition-all">
+              <Button variant="hero" size="lg" className="text-base px-8 py-6 shadow-lg shadow-secondary/25 hover:shadow-xl hover:shadow-secondary/30 transition-all" onClick={() => { const el = document.getElementById("services"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>
                 Explore Solutions
                 <ArrowRight size={18} className="ml-1" />
               </Button>
-              <Button variant="heroOutline" size="lg" className="text-base px-8 py-6">
+              <Button variant="heroOutline" size="lg" className="text-base px-8 py-6" onClick={() => { const el = document.getElementById("contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>
                 Book a Demo
               </Button>
             </motion.div>
