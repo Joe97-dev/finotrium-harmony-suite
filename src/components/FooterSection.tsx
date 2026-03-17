@@ -1,4 +1,4 @@
-import logo from "@/assets/finotrium-logo.png";
+import logo from "@/assets/finotrium-logo-transparent.png";
 
 const FooterSection = () => {
   return (
@@ -6,7 +6,7 @@ const FooterSection = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div>
-            <img src={logo} alt="Finotrium" className="h-14 w-auto mb-4 rounded-md" />
+            <img src={logo} alt="Finotrium" className="h-14 w-auto mb-4" />
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-xs">
               Enterprise management systems for Africa and beyond.
             </p>
