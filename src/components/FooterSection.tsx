@@ -48,8 +48,8 @@ const FooterSection = () => {
             © {new Date().getFullYear()} Finotrium. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-primary-foreground/50">
-            <a href="#" className="hover:text-primary-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Terms of Service</a>
+            <a href="#privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</a>
+            <a href="#terms" className="hover:text-primary-foreground transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
