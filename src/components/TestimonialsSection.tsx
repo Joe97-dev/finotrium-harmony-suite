@@ -23,6 +23,13 @@ const testimonials = [
     rating: 5,
     initials: "SM",
   },
+  {
+    name: "Margaret Kairu",
+    role: "CEO, Superdon Merchants",
+    content: "The M-Pesa integration has made our cash lending operations incredibly easy and seamless. Managing disbursements and repayments is now effortless — Finotrium truly understands microfinance.",
+    rating: 5,
+    initials: "MK",
+  },
 ];
 
 const trustedBy = [
