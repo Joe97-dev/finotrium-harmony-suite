@@ -167,21 +167,6 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="absolute -bottom-4 -left-4 bg-card rounded-lg border border-border shadow-card-hover p-3 flex items-center gap-3"
-            >
-              <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center">
-                <TrendingUp size={18} className="text-accent" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground">Efficiency up</p>
-                <p className="font-display font-bold text-primary text-sm">+40%</p>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
 
