@@ -15,10 +15,10 @@ const FooterSection = () => {
           <div>
             <h4 className="font-display font-semibold text-sm mb-4 uppercase tracking-wider text-secondary">Solutions</h4>
             <ul className="space-y-2.5 text-sm text-primary-foreground/60">
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Hospital Management</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">School Management</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Loan Management</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">E-Commerce</a></li>
+              <li><a href="#services" className="hover:text-primary-foreground transition-colors">Hospital Management</a></li>
+              <li><a href="#services" className="hover:text-primary-foreground transition-colors">School Management</a></li>
+              <li><a href="#services" className="hover:text-primary-foreground transition-colors">Loan Management</a></li>
+              <li><a href="#services" className="hover:text-primary-foreground transition-colors">E-Commerce</a></li>
             </ul>
           </div>
 
