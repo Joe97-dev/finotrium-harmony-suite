@@ -3,6 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp, Building2, GraduationCap, Landmark, ShoppingCart, Home, Globe, Wrench, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import hospitalImg from "@/assets/slides/hospital.jpg";
+import schoolImg from "@/assets/slides/school.jpg";
+import loanImg from "@/assets/slides/loan.jpg";
+import ecommerceImg from "@/assets/slides/ecommerce.jpg";
+import propertyImg from "@/assets/slides/property.jpg";
+import websiteImg from "@/assets/slides/website.jpg";
+import libraryImg from "@/assets/slides/library.jpg";
+import customImg from "@/assets/slides/custom.jpg";
+
 const stats = [
   { icon: Briefcase, value: "50+", label: "Projects Delivered" },
   { icon: Users, value: "30+", label: "Active Clients" },
@@ -11,14 +20,14 @@ const stats = [
 ];
 
 const slides = [
-  { icon: Building2, title: "Hospital Management", desc: "Patient care, billing & staff management", color: "secondary" as const },
-  { icon: GraduationCap, title: "School Management", desc: "Student records, grading & timetables", color: "accent" as const },
-  { icon: Landmark, title: "Loan Management", desc: "Origination, repayment & risk scoring", color: "secondary" as const },
-  { icon: ShoppingCart, title: "E-Commerce Systems", desc: "Storefronts, orders & payment integration", color: "accent" as const },
-  { icon: Home, title: "Property Management", desc: "Tenants, rent collection & maintenance", color: "secondary" as const },
-  { icon: Globe, title: "Website Development", desc: "Custom, responsive & SEO-optimized sites", color: "accent" as const },
-  { icon: BookOpen, title: "Library Management", desc: "Cataloguing, borrowing & digital access", color: "secondary" as const },
-  { icon: Wrench, title: "Custom Systems", desc: "Bespoke solutions for unique operations", color: "accent" as const },
+  { icon: Building2, title: "Hospital Management", desc: "Patient care, billing & staff management", color: "secondary" as const, image: hospitalImg },
+  { icon: GraduationCap, title: "School Management", desc: "Student records, grading & timetables", color: "accent" as const, image: schoolImg },
+  { icon: Landmark, title: "Loan Management", desc: "Origination, repayment & risk scoring", color: "secondary" as const, image: loanImg },
+  { icon: ShoppingCart, title: "E-Commerce Systems", desc: "Storefronts, orders & payment integration", color: "accent" as const, image: ecommerceImg },
+  { icon: Home, title: "Property Management", desc: "Tenants, rent collection & maintenance", color: "secondary" as const, image: propertyImg },
+  { icon: Globe, title: "Website Development", desc: "Custom, responsive & SEO-optimized sites", color: "accent" as const, image: websiteImg },
+  { icon: BookOpen, title: "Library Management", desc: "Cataloguing, borrowing & digital access", color: "secondary" as const, image: libraryImg },
+  { icon: Wrench, title: "Custom Systems", desc: "Bespoke solutions for unique operations", color: "accent" as const, image: customImg },
 ];
 
 const HeroSection = () => {
@@ -108,48 +117,54 @@ const HeroSection = () => {
               </div>
 
               {/* Slide content */}
-              <div className="relative h-full flex items-center justify-center p-8">
+              <div className="relative h-full">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
-                    initial={{ opacity: 0, x: 60 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -60 }}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="flex flex-col items-center text-center"
+                    className="absolute inset-0"
                   >
-                    {(() => {
-                      const slide = slides[currentSlide];
-                      const iconBg = slide.color === "accent" ? "bg-accent/15" : "bg-secondary/15";
-                      const iconColor = slide.color === "accent" ? "text-accent" : "text-secondary";
-                      return (
-                        <>
-                          <div className={`w-20 h-20 rounded-2xl ${iconBg} flex items-center justify-center mb-5`}>
-                            <slide.icon size={36} className={iconColor} />
-                          </div>
-                          <h3 className="font-display font-bold text-xl text-primary mb-2">{slide.title}</h3>
-                          <p className="text-muted-foreground text-sm max-w-xs">{slide.desc}</p>
-                        </>
-                      );
-                    })()}
+                    {/* Background image */}
+                    <img
+                      src={slides[currentSlide].image}
+                      alt={slides[currentSlide].title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Overlay with title */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent flex flex-col justify-end p-6">
+                      <div className="flex items-center gap-3">
+                        {(() => {
+                          const slide = slides[currentSlide];
+                          const iconColor = slide.color === "accent" ? "text-accent" : "text-secondary";
+                          return (
+                            <>
+                              <slide.icon size={22} className={iconColor} />
+                              <h3 className="font-display font-bold text-lg text-primary-foreground">{slide.title}</h3>
+                            </>
+                          );
+                        })()}
+                      </div>
+                      <p className="text-primary-foreground/70 text-sm mt-1">{slides[currentSlide].desc}</p>
+                    </div>
                   </motion.div>
                 </AnimatePresence>
 
                 {/* Slide indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                <div className="absolute bottom-4 right-4 flex gap-1.5 z-10">
                   {slides.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentSlide(i)}
                       className={`h-1.5 rounded-full transition-all duration-300 ${
-                        i === currentSlide ? "w-6 bg-secondary" : "w-1.5 bg-border hover:bg-muted-foreground/30"
+                        i === currentSlide ? "w-6 bg-secondary" : "w-1.5 bg-primary-foreground/40 hover:bg-primary-foreground/60"
                       }`}
                     />
                   ))}
                 </div>
               </div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Floating badge */}
