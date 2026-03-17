@@ -1,7 +1,7 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp, Building2, GraduationCap, Landmark, ShoppingCart, Home, Globe, Wrench, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroDashboard from "@/assets/hero-dashboard.png";
 
 const stats = [
   { icon: Briefcase, value: "50+", label: "Projects Delivered" },
@@ -10,7 +10,27 @@ const stats = [
   { icon: TrendingUp, value: "6+", label: "Years Experience" },
 ];
 
+const slides = [
+  { icon: Building2, title: "Hospital Management", desc: "Patient care, billing & staff management", color: "secondary" as const },
+  { icon: GraduationCap, title: "School Management", desc: "Student records, grading & timetables", color: "accent" as const },
+  { icon: Landmark, title: "Loan Management", desc: "Origination, repayment & risk scoring", color: "secondary" as const },
+  { icon: ShoppingCart, title: "E-Commerce Systems", desc: "Storefronts, orders & payment integration", color: "accent" as const },
+  { icon: Home, title: "Property Management", desc: "Tenants, rent collection & maintenance", color: "secondary" as const },
+  { icon: Globe, title: "Website Development", desc: "Custom, responsive & SEO-optimized sites", color: "accent" as const },
+  { icon: BookOpen, title: "Library Management", desc: "Cataloguing, borrowing & digital access", color: "secondary" as const },
+  { icon: Wrench, title: "Custom Systems", desc: "Bespoke solutions for unique operations", color: "accent" as const },
+];
+
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative pt-32 pb-8 overflow-hidden">
       {/* Animated background */}
