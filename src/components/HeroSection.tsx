@@ -117,48 +117,54 @@ const HeroSection = () => {
               </div>
 
               {/* Slide content */}
-              <div className="relative h-full flex items-center justify-center p-8">
+              <div className="relative h-full">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
-                    initial={{ opacity: 0, x: 60 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -60 }}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="flex flex-col items-center text-center"
+                    className="absolute inset-0"
                   >
-                    {(() => {
-                      const slide = slides[currentSlide];
-                      const iconBg = slide.color === "accent" ? "bg-accent/15" : "bg-secondary/15";
-                      const iconColor = slide.color === "accent" ? "text-accent" : "text-secondary";
-                      return (
-                        <>
-                          <div className={`w-20 h-20 rounded-2xl ${iconBg} flex items-center justify-center mb-5`}>
-                            <slide.icon size={36} className={iconColor} />
-                          </div>
-                          <h3 className="font-display font-bold text-xl text-primary mb-2">{slide.title}</h3>
-                          <p className="text-muted-foreground text-sm max-w-xs">{slide.desc}</p>
-                        </>
-                      );
-                    })()}
+                    {/* Background image */}
+                    <img
+                      src={slides[currentSlide].image}
+                      alt={slides[currentSlide].title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Overlay with title */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent flex flex-col justify-end p-6">
+                      <div className="flex items-center gap-3">
+                        {(() => {
+                          const slide = slides[currentSlide];
+                          const iconColor = slide.color === "accent" ? "text-accent" : "text-secondary";
+                          return (
+                            <>
+                              <slide.icon size={22} className={iconColor} />
+                              <h3 className="font-display font-bold text-lg text-primary-foreground">{slide.title}</h3>
+                            </>
+                          );
+                        })()}
+                      </div>
+                      <p className="text-primary-foreground/70 text-sm mt-1">{slides[currentSlide].desc}</p>
+                    </div>
                   </motion.div>
                 </AnimatePresence>
 
                 {/* Slide indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                <div className="absolute bottom-4 right-4 flex gap-1.5 z-10">
                   {slides.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentSlide(i)}
                       className={`h-1.5 rounded-full transition-all duration-300 ${
-                        i === currentSlide ? "w-6 bg-secondary" : "w-1.5 bg-border hover:bg-muted-foreground/30"
+                        i === currentSlide ? "w-6 bg-secondary" : "w-1.5 bg-primary-foreground/40 hover:bg-primary-foreground/60"
                       }`}
                     />
                   ))}
                 </div>
               </div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Floating badge */}
