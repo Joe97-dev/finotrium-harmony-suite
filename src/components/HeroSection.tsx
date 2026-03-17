@@ -77,20 +77,6 @@ const HeroSection = () => {
             transition={{ duration: 0.7 }}
             className="max-w-xl"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold mb-8 tracking-wide uppercase backdrop-blur-sm"
-            >
-              <motion.div
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              >
-                <Zap size={14} />
-              </motion.div>
-              Enterprise Solutions
-            </motion.div>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold text-primary leading-[1.08] mb-6 tracking-tight">
               Management Systems
