@@ -36,6 +36,7 @@ const trustedBy = [
   "MediCare Group",
   "EduFirst Schools",
   "QuickLend Finance",
+  "Superdon Merchants",
   "PropVault",
   "ShopAfrica",
   "County Gov. Nairobi",
