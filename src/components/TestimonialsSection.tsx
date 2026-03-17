@@ -23,12 +23,20 @@ const testimonials = [
     rating: 5,
     initials: "SM",
   },
+  {
+    name: "Margaret Kairu",
+    role: "CEO, Superdon Merchants",
+    content: "The M-Pesa integration has made our cash lending operations incredibly easy and seamless. Managing disbursements and repayments is now effortless — Finotrium truly understands microfinance.",
+    rating: 5,
+    initials: "MK",
+  },
 ];
 
 const trustedBy = [
   "MediCare Group",
   "EduFirst Schools",
   "QuickLend Finance",
+  "Superdon Merchants",
   "PropVault",
   "ShopAfrica",
   "County Gov. Nairobi",
@@ -76,7 +84,7 @@ const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
