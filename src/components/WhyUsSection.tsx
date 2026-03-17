@@ -35,7 +35,7 @@ const reasons: { icon: LucideIcon; title: string; desc: string; stat: string; st
 
 const WhyUsSection = () => {
   return (
-    <section className="py-20 bg-gradient-dark text-primary-foreground relative overflow-hidden">
+    <section id="why-us" className="py-20 bg-gradient-dark text-primary-foreground relative overflow-hidden">
       {/* Decorative grid lines */}
       <div className="absolute inset-0 opacity-[0.04]" style={{
         backgroundImage: `linear-gradient(hsl(var(--secondary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--secondary)) 1px, transparent 1px)`,
