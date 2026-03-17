@@ -3,6 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp, Building2, GraduationCap, Landmark, ShoppingCart, Home, Globe, Wrench, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import hospitalImg from "@/assets/slides/hospital.jpg";
+import schoolImg from "@/assets/slides/school.jpg";
+import loanImg from "@/assets/slides/loan.jpg";
+import ecommerceImg from "@/assets/slides/ecommerce.jpg";
+import propertyImg from "@/assets/slides/property.jpg";
+import websiteImg from "@/assets/slides/website.jpg";
+import libraryImg from "@/assets/slides/library.jpg";
+import customImg from "@/assets/slides/custom.jpg";
+
 const stats = [
   { icon: Briefcase, value: "50+", label: "Projects Delivered" },
   { icon: Users, value: "30+", label: "Active Clients" },
@@ -11,14 +20,14 @@ const stats = [
 ];
 
 const slides = [
-  { icon: Building2, title: "Hospital Management", desc: "Patient care, billing & staff management", color: "secondary" as const },
-  { icon: GraduationCap, title: "School Management", desc: "Student records, grading & timetables", color: "accent" as const },
-  { icon: Landmark, title: "Loan Management", desc: "Origination, repayment & risk scoring", color: "secondary" as const },
-  { icon: ShoppingCart, title: "E-Commerce Systems", desc: "Storefronts, orders & payment integration", color: "accent" as const },
-  { icon: Home, title: "Property Management", desc: "Tenants, rent collection & maintenance", color: "secondary" as const },
-  { icon: Globe, title: "Website Development", desc: "Custom, responsive & SEO-optimized sites", color: "accent" as const },
-  { icon: BookOpen, title: "Library Management", desc: "Cataloguing, borrowing & digital access", color: "secondary" as const },
-  { icon: Wrench, title: "Custom Systems", desc: "Bespoke solutions for unique operations", color: "accent" as const },
+  { icon: Building2, title: "Hospital Management", desc: "Patient care, billing & staff management", color: "secondary" as const, image: hospitalImg },
+  { icon: GraduationCap, title: "School Management", desc: "Student records, grading & timetables", color: "accent" as const, image: schoolImg },
+  { icon: Landmark, title: "Loan Management", desc: "Origination, repayment & risk scoring", color: "secondary" as const, image: loanImg },
+  { icon: ShoppingCart, title: "E-Commerce Systems", desc: "Storefronts, orders & payment integration", color: "accent" as const, image: ecommerceImg },
+  { icon: Home, title: "Property Management", desc: "Tenants, rent collection & maintenance", color: "secondary" as const, image: propertyImg },
+  { icon: Globe, title: "Website Development", desc: "Custom, responsive & SEO-optimized sites", color: "accent" as const, image: websiteImg },
+  { icon: BookOpen, title: "Library Management", desc: "Cataloguing, borrowing & digital access", color: "secondary" as const, image: libraryImg },
+  { icon: Wrench, title: "Custom Systems", desc: "Bespoke solutions for unique operations", color: "accent" as const, image: customImg },
 ];
 
 const HeroSection = () => {
