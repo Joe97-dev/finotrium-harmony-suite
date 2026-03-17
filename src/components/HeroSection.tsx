@@ -1,7 +1,7 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Zap, Users, Briefcase, Award, TrendingUp, Building2, GraduationCap, Landmark, ShoppingCart, Home, Globe, Wrench, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroDashboard from "@/assets/hero-dashboard.png";
 
 const stats = [
   { icon: Briefcase, value: "50+", label: "Projects Delivered" },
@@ -10,7 +10,27 @@ const stats = [
   { icon: TrendingUp, value: "6+", label: "Years Experience" },
 ];
 
+const slides = [
+  { icon: Building2, title: "Hospital Management", desc: "Patient care, billing & staff management", color: "secondary" as const },
+  { icon: GraduationCap, title: "School Management", desc: "Student records, grading & timetables", color: "accent" as const },
+  { icon: Landmark, title: "Loan Management", desc: "Origination, repayment & risk scoring", color: "secondary" as const },
+  { icon: ShoppingCart, title: "E-Commerce Systems", desc: "Storefronts, orders & payment integration", color: "accent" as const },
+  { icon: Home, title: "Property Management", desc: "Tenants, rent collection & maintenance", color: "secondary" as const },
+  { icon: Globe, title: "Website Development", desc: "Custom, responsive & SEO-optimized sites", color: "accent" as const },
+  { icon: BookOpen, title: "Library Management", desc: "Cataloguing, borrowing & digital access", color: "secondary" as const },
+  { icon: Wrench, title: "Custom Systems", desc: "Bespoke solutions for unique operations", color: "accent" as const },
+];
+
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative pt-32 pb-8 overflow-hidden">
       {/* Animated background */}
@@ -69,21 +89,69 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Right - Dashboard preview */}
+          {/* Right - Animated slides */}
           <motion.div
             initial={{ opacity: 0, x: 40, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative hidden lg:block"
           >
-            <div className="relative rounded-lg overflow-hidden shadow-2xl border border-border/50">
-              <img
-                src={heroDashboard}
-                alt="Finotrium management dashboard preview"
-                className="w-full h-auto"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+            <div className="relative rounded-lg overflow-hidden shadow-2xl border border-border/50 bg-card aspect-[4/3]">
+              {/* Slide header bar */}
+              <div className="bg-primary px-5 py-3 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-destructive/80" />
+                  <div className="w-3 h-3 rounded-full bg-accent/80" />
+                  <div className="w-3 h-3 rounded-full bg-secondary/80" />
+                </div>
+                <span className="text-primary-foreground/60 text-xs font-mono ml-2">finotrium.com</span>
+              </div>
+
+              {/* Slide content */}
+              <div className="relative h-full flex items-center justify-center p-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, x: 60 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -60 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {(() => {
+                      const slide = slides[currentSlide];
+                      const iconBg = slide.color === "accent" ? "bg-accent/15" : "bg-secondary/15";
+                      const iconColor = slide.color === "accent" ? "text-accent" : "text-secondary";
+                      return (
+                        <>
+                          <div className={`w-20 h-20 rounded-2xl ${iconBg} flex items-center justify-center mb-5`}>
+                            <slide.icon size={36} className={iconColor} />
+                          </div>
+                          <h3 className="font-display font-bold text-xl text-primary mb-2">{slide.title}</h3>
+                          <p className="text-muted-foreground text-sm max-w-xs">{slide.desc}</p>
+                        </>
+                      );
+                    })()}
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Slide indicators */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === currentSlide ? "w-6 bg-secondary" : "w-1.5 bg-border hover:bg-muted-foreground/30"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none" />
             </div>
+
             {/* Floating badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
