@@ -114,7 +114,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <span className="font-semibold text-foreground">Email:</span>{" "}
-                info@finotrium.com
+                finotrium@gmail.com
               </div>
               <div>
                 <span className="font-semibold text-foreground">Response Time:</span>{" "}
