@@ -37,6 +37,20 @@ const testimonials = [
     rating: 5,
     initials: "HM",
   },
+  {
+    name: "Faith Naliaka",
+    role: "General Manager, Savanna Breeze Hotel",
+    content: "Finotrium's hotel management system unified our bookings, front desk, restaurant billing and M-Pesa payments. Online reservations and check-ins are now seamless, and our occupancy rate jumped 35%.",
+    rating: 5,
+    initials: "FN",
+  },
+  {
+    name: "Daniel Otieno",
+    role: "Founder, PropVault Realty",
+    content: "Managing tenants, leases and rent collection across our properties used to take days. Finotrium's property management system automated invoicing, M-Pesa rent payments and maintenance requests — landlords finally have peace of mind.",
+    rating: 5,
+    initials: "DO",
+  },
 ];
 
 const trustedBy = [
@@ -45,7 +59,8 @@ const trustedBy = [
   "QuickLend Finance",
   "Superdon Merchants",
   "Pwani Auto Hub",
-  "PropVault",
+  "Savanna Breeze Hotel",
+  "PropVault Realty",
   "ShopAfrica",
   "County Gov. Nairobi",
 ];
