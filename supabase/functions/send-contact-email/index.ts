@@ -3,6 +3,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const GATEWAY_URL = 'https://connector-gateway.lovable.dev/resend';
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -18,7 +20,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return new Response(
@@ -27,42 +28,50 @@ Deno.serve(async (req) => {
       );
     }
 
+    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+
+    if (!LOVABLE_API_KEY) {
+      throw new Error('LOVABLE_API_KEY is not configured');
+    }
     if (!RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not configured');
-      // Still return success to the user - we log the contact internally
-      console.log('Contact form submission:', { name, email, company, service, message });
-      return new Response(
-        JSON.stringify({ success: true, message: 'Your message has been received.' }),
-        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      throw new Error('RESEND_API_KEY is not configured');
     }
 
-    const res = await fetch('https://api.resend.com/emails', {
+    const escape = (s: string) =>
+      String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const res = await fetch(`${GATEWAY_URL}/emails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'X-Connection-Api-Key': RESEND_API_KEY,
       },
       body: JSON.stringify({
         from: 'Finotrium Contact <onboarding@resend.dev>',
         to: ['finotrium@gmail.com'],
+        reply_to: email,
         subject: `New Contact: ${name} - ${service || 'General Inquiry'}`,
         html: `
           <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Company:</strong> ${company || 'N/A'}</p>
-          <p><strong>Service:</strong> ${service || 'N/A'}</p>
+          <p><strong>Name:</strong> ${escape(name)}</p>
+          <p><strong>Email:</strong> ${escape(email)}</p>
+          <p><strong>Company:</strong> ${escape(company || 'N/A')}</p>
+          <p><strong>Service:</strong> ${escape(service || 'N/A')}</p>
           <p><strong>Message:</strong></p>
-          <p>${message}</p>
+          <p>${escape(message).replace(/\n/g, '<br/>')}</p>
         `,
       }),
     });
 
+    const data = await res.json().catch(() => ({}));
     if (!res.ok) {
-      const errorData = await res.text();
-      console.error(`Resend API error [${res.status}]:`, errorData);
+      console.error(`Resend gateway error [${res.status}]:`, JSON.stringify(data));
+      return new Response(
+        JSON.stringify({ error: 'Failed to send email', details: data }),
+        { status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     return new Response(
@@ -71,8 +80,9 @@ Deno.serve(async (req) => {
     );
   } catch (error) {
     console.error('Error processing contact form:', error);
+    const msg = error instanceof Error ? error.message : 'Unknown error';
     return new Response(
-      JSON.stringify({ error: 'Failed to process your request' }),
+      JSON.stringify({ error: 'Failed to process your request', details: msg }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
