@@ -30,6 +30,13 @@ const testimonials = [
     rating: 5,
     initials: "MK",
   },
+  {
+    name: "Hassan Mwakio",
+    role: "Managing Director, Pwani Auto Hub",
+    content: "Finotrium's car dealership management system streamlined our entire showroom in Mombasa — inventory, test drives, financing and after-sales are all in one place. Vehicle turnover improved within the first quarter.",
+    rating: 5,
+    initials: "HM",
+  },
 ];
 
 const trustedBy = [
@@ -37,6 +44,7 @@ const trustedBy = [
   "EduFirst Schools",
   "QuickLend Finance",
   "Superdon Merchants",
+  "Pwani Auto Hub",
   "PropVault",
   "ShopAfrica",
   "County Gov. Nairobi",
