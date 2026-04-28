@@ -11,11 +11,11 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const { name, email, company, service, message } = await req.json();
+    const { name, email, phone, company, service, message } = await req.json();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !phone || !message) {
       return new Response(
-        JSON.stringify({ error: 'Name, email, and message are required' }),
+        JSON.stringify({ error: 'Name, email, phone, and message are required' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -57,6 +57,7 @@ Deno.serve(async (req) => {
           <h2>New Contact Form Submission</h2>
           <p><strong>Name:</strong> ${escape(name)}</p>
           <p><strong>Email:</strong> ${escape(email)}</p>
+          <p><strong>Phone:</strong> ${escape(phone)}</p>
           <p><strong>Company:</strong> ${escape(company || 'N/A')}</p>
           <p><strong>Service:</strong> ${escape(service || 'N/A')}</p>
           <p><strong>Message:</strong></p>
