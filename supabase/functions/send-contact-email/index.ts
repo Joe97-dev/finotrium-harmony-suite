@@ -50,7 +50,7 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'Finotrium Contact <onboarding@resend.dev>',
-        to: ['finotrium@gmail.com'],
+        to: ['joekazungu37@gmail.com'],
         reply_to: email,
         subject: `New Contact: ${name} - ${service || 'General Inquiry'}`,
         html: `
