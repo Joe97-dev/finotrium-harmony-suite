@@ -8,6 +8,7 @@ import { z } from "zod";
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Invalid email address").max(255),
+  phone: z.string().trim().min(7, "Phone number is required").max(20, "Phone number too long").regex(/^[+\d\s()-]+$/, "Invalid phone number"),
   company: z.string().trim().max(100).optional(),
   service: z.string().optional(),
   message: z.string().trim().min(1, "Message is required").max(2000),
@@ -30,6 +31,7 @@ const ContactSection = () => {
   const [form, setForm] = useState<ContactForm>({
     name: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     message: "",
@@ -160,6 +162,19 @@ const ContactSection = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1.5">
+                  Phone <span className="text-destructive">*</span>
+                </label>
+                <input
+                  type="tel"
+                  value={form.phone}
+                  onChange={(e) => handleChange("phone", e.target.value)}
+                  className="w-full h-10 px-3 rounded-md border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  placeholder="0712 345 678"
+                />
+                {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone}</p>}
+              </div>
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">
                   Company
